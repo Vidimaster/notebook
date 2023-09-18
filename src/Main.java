@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
-        Notebook[] myNotebook = new Notebook[10];
+        Notebook[] myNotebook = new Notebook[100];
         ArrayList<Object> arr = CreateList();
 
         Set<Notebook> set = new HashSet<>();
         Set<String> s = new HashSet<String>();
         Set<Notebook> filteredSet = new HashSet<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             arr = CreateList();
-            myNotebook[i] = new Notebook(arr.get(0).toString(), (int) arr.get(1), (int) arr.get(2), arr.get(3).toString(), arr.get(4).toString(), (int) arr.get(5), (int) arr.get(6));
+            myNotebook[i] = new Notebook(arr.get(0).toString(), (int) arr.get(1), (int) arr.get(2), arr.get(3).toString(), arr.get(4).toString(), i, (int) arr.get(6));
             set.add(myNotebook[i]);
         }
 
@@ -26,7 +26,9 @@ public class Main {
         Map<String, String> mapfilter = new HashMap<>();
         mapfilter = DefaultMap ();
         boolean work = true;
+        System.out.println("\n UnfFiltered set: \n");
         System.out.println(set);
+
         while (work) {
 
             System.out.println("Enter command to filter Set of Notebooks: \n 1 - Change Filter by memory \n 2 - Change Filter by hard drive \n 3 - Change Filter by OS \n 4 - Change Filter by color \n 5 - Show Filtered Set of Notebooks \n 6 - Filters to Default \n 7 - Show Entire Set without filters \n 8 - exit");
@@ -75,10 +77,11 @@ public class Main {
                 case "5":
                     for (int i = 0; i < myNotebook.length; i++) {
 
-                        if (myNotebook[i].getByMemory() > Integer.valueOf(mapfilter.get("memory")) && myNotebook[i].getByHarddisk() > Integer.valueOf(mapfilter.get("harddisk")) && myNotebook[i].getByOS().equals(mapfilter.get("OS")) && mapfilter.get("color") != null && myNotebook[i].getByColor().equals(mapfilter.get("color"))) {
+                        if (myNotebook[i].getByMemory() >= Integer.valueOf(mapfilter.get("memory")) && myNotebook[i].getByHarddisk() >= Integer.valueOf(mapfilter.get("harddisk")) && myNotebook[i].getByOS().equals(mapfilter.get("OS")) && mapfilter.get("color") != null && myNotebook[i].getByColor().equals(mapfilter.get("color"))) {
                             filteredSet.add(myNotebook[i]);
                         }
                     }
+                    System.out.println("\n Filtered set: \n");
                     System.out.println(filteredSet);
                     filteredSet.clear();
                     break;
@@ -87,6 +90,7 @@ public class Main {
                     mapfilter = DefaultMap ();
                     break;
                 case "7":
+                    System.out.println("\n UnfFiltered set: \n");
                     System.out.println(set);
                     break;
                 case "8":

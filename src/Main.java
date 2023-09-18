@@ -1,9 +1,7 @@
 import java.util.*;
-import java.util.List;
-import java.util.LinkedList;
+
 import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
@@ -111,7 +109,6 @@ public class Main {
         String[] strAr2 = new String[]{"Windows 7", "Windows 8", "Windows 10", "MacOS"};
         String[] strAr3 = new String[]{"grey", "white", "black"};
         int price = 20000;
-        int id = 200000078;
         int temp = 0;
         Random random = new Random();
         temp = random.nextInt(strAr1.length);
@@ -130,7 +127,7 @@ public class Main {
 
         temp = random.nextInt(strAr3.length);
         arr.add(strAr3[temp]);
-        arr.add(++id);
+        arr.add(0);
         arr.add(price);
 
         return arr;
